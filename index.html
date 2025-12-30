@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>I Love You ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #start {
+      font-size: 40px;
+      color: pink;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+
+    #jumpscare {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: black;
+      z-index: 999;
+    }
+
+    #jumpscare img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: shake 0.08s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0,0); }
+      25% { transform: translate(6px,-6px); }
+      50% { transform: translate(-6px,6px); }
+      75% { transform: translate(6px,6px); }
+      100% { transform: translate(-6px,-6px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="start" onclick="startJumpscare()">I Love You ❤️</div>
+
+  <div id="jumpscare">
+    <img src="scare.jpg" alt="jumpscare">
+    <audio id="sound">
+      <source src="scream.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <script>
+    function startJumpscare() {
+      document.getElementById("start").style.display = "none";
+      document.getElementById("jumpscare").style.display = "block";
+
+      const sound = document.getElementById("sound");
+      sound.volume = 1.0;
+      sound.play();
+    }
+  </script>
+
+</body>
+</html>
